@@ -28,7 +28,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset
     ($_POST['message'])) {
 
     // If values of each form's row are correct, send these values to the Data Base
-    if (!preg_match('/[[:alpha:]]/is', $_POST['name'])) {
+    if (!preg_match('/[[:alpha:]]{1,30}/is', $_POST['name'])) {
         $error_message = $mysql_object->getErrorMessage(1);
         $template_object->putErrorMessage($error_message);
         } elseif (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
